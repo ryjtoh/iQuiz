@@ -9,7 +9,10 @@ import UIKit
 
 class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
+    
 
+    
+    @IBOutlet weak var playBtn: UIButton!
     @IBOutlet weak var quizTableView: UITableView!
     
     @IBAction func didTapSettings(_ sender: Any) {
@@ -20,6 +23,15 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         initList()
+    }
+
+    
+    @IBAction func onClickPlay(_ sender: Any) {
+        guard let vc = storyboard?.instantiateViewController(withIdentifier: "QuestionViewController") else {
+            return
+        }
+        
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
     func showAlert() {
